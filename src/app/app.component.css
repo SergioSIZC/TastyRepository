@@ -1,0 +1,203 @@
+
+.book {
+	width: 490px;
+	height: 550px;
+	position: relative;
+	transition-duration: 1s;
+	perspective: 1500;
+}
+input {
+	display: none;
+}
+.cover, .back-cover {
+	background-color: #ff6347;
+	width: 100%;
+	height: 100%;
+	border-radius: 0 15px 15px 0;
+	box-shadow: 0 0 5px rgb(41, 41, 41);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transform-origin: center left;
+}
+.cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    transition: transform 1.5s;
+    transform-origin: center left;
+    transform-style: preserve-3d;
+}
+
+.cover .front, .cover .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Esconde la cara trasera al rotar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cover label {
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cover .back label {
+	width: 10%;
+	height: 10%;
+	cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+	
+}
+.cover .back .hat{
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+.cover img{
+    height: 60%;
+    width: 70%;
+}
+.back-cover {
+	position: relative;
+	z-index: -1;
+}
+.page {
+	position: absolute;
+	background-color: #f5f5dc;
+	width: 470px;
+	height: 530px;
+	border-radius: 0 15px 15px 0;
+	margin-top: 10px;
+	transform-origin: left;
+	transform-style: preserve-3d;
+	transform: rotateY(0deg);
+	transition-duration: 1.5s;
+	
+}
+.page img {
+	width: 70%;
+	height: 50%;
+	border-radius: 15px 0 0 15px;
+}
+.front-page {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+	box-sizing: border-box;
+	padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.overflow-hidden{
+	overflow: hidden;
+}
+.front-page2 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+	box-sizing: border-box;
+	padding: 0.5rem;
+	overflow-y: auto;
+}
+.back-page {
+	transform: rotateY(180deg);
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+	z-index: 99;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	
+}
+.next, .prev {
+	position: absolute;
+	bottom: 1em;
+	cursor: pointer;
+}
+.next {
+	right: 1em;
+}
+.prev {
+	left: 1em;
+}
+#page1 {
+	z-index: 3;
+}
+#page2 {
+	z-index: 2;
+}
+#page3 {
+	z-index: 1;
+}
+#checkbox-cover:checked ~ .book {
+	transform: translateX(200px);
+}
+.cover .back {
+    transform: rotateY(180deg);
+    border-radius: 15px 0 0 15px;
+    background-color: #ff6347; /* Ajusta el color para diferenciar la parte interna */
+}
+.back img{
+    height: 150%;
+    width: 120%;
+}
+
+/* Cuando se activa el checkbox, rota la portada y muestra la parte trasera */
+#checkbox-cover:checked ~ .book .cover {
+    transform: rotateY(-180deg);
+}
+#checkbox-cover:checked ~ .book .cover {
+	transition: transform 1.5s, z-index 0.5s 0.5s;
+	transform: rotateY(-180deg);
+	z-index: 1;
+}
+#checkbox-cover:checked ~ .book .page {
+	box-shadow: 0 0 3px rgb(99, 98, 98);
+}
+#checkbox-page1:checked ~ .book #page1 {
+	transition: transform 1.5s, z-index 0.5s 0.5s;
+	transform: rotateY(-180deg);
+	z-index: 2;
+}
+#checkbox-page2:checked ~ .book #page2 {
+	transform: rotateY(-180deg);
+	z-index: 3;
+}
+a{
+    text-decoration: none;
+	border: 4px solid #ffd700;
+	border-radius: 25px;
+	padding: 10px 20px;
+	font-family: 'Playfair Display', cursive;
+	font-weight: bold;
+}
+a:hover{
+	box-shadow: 5px 2.5px 5px #ffa500;
+}
+.explore-label{
+	
+	width: 45%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: -10px;
+}

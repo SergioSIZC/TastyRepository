@@ -1,0 +1,66 @@
+<p class="titulo">Nueva Receta</p>
+<form action="" class="">
+    <div class="container name">
+        <label for="recipe-title">Nombre de la receta</label>
+        <input type="text" class="input" id="recipe-title">
+    </div>
+    <table class="inputs">
+        <tr>
+            <th><label for="recipe-portions">Cantidad de porciones</label></th>
+            <th><label for="recipe-duration">Duración (minutos)</label></th>
+        </tr>
+        <tr>
+            <td><input type="text" class="input portion" id="recipe-portions"></td>
+            <td><input type="text" class="input i-duration" id="recipe-duration"></td>
+        </tr>
+    </table>
+    
+    <div class="container ingredient">
+        <label for="">Lista de Ingredientes</label>
+        <ul>
+            <li *ngFor="let ingrediente of ingredientes">
+                {{ingrediente.nombre}} - {{ingrediente.cantidad}}{{ingrediente.medida}}
+            </li>
+        </ul>
+        <table class="inputs">
+            <tr>
+                <th><label for="ingrediente">Ingrediente</label></th>
+                <th><label for="cantidad">Cantidad</label></th>
+                <th><label for="medida">Unidad</label></th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" id="ingrediente" class="input i-name" [(ngModel)]="nombre" name="nombre" placeholder="'Arroz'">
+                </td>
+                <td>
+                    <input type="number" id="cantidad" class="input cant" [(ngModel)]="cantidad" name="cantidad" placeholder="'10'">
+                </td>
+                <td>
+                    <select name="medida" id="medida" class="input-select medida" [(ngModel)]="medida">
+                        <option value="kg">kg</option>
+                        <option value="gr">gr</option>
+                        <option value="ml">ml</option>
+                        <option value="L">L</option>
+                        <option value="cda.">cda.</option>
+                        <option value="cdta.">cdta.</option>
+                        <option value="taza">taza</option>
+                        <option value="u">unidad</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <button type="button" class="agregar" (click)=agregarIngrediente()>Agregar</button>
+    </div>
+    <div class="container instructions">
+        <label for="recipe-instructions">Preparación</label>
+        <textarea type="text" class="input i-instruction" id="recipe-instructions"></textarea>
+    </div>  
+    <div class="container images">
+        <label for="recipe-image">Imagen de la receta</label>
+        <input type="file" name="recipe-image" id="recipe-image">
+    </div>
+    
+    <div class="container">
+        <button class="btn">Agregar receta</button>
+    </div>
+</form>
