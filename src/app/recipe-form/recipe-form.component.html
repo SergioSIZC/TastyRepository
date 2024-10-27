@@ -2,7 +2,7 @@
 <form action="" class="">
     <div class="container name">
         <label for="recipe-title">Nombre de la receta</label>
-        <input type="text" class="input" id="recipe-title">
+        <input type="text" class="input" name="recipe-title" id="recipe-title" [(ngModel)]="recipeTitle">
     </div>
     <table class="inputs">
         <tr>
@@ -10,8 +10,8 @@
             <th><label for="recipe-duration">Duración (minutos)</label></th>
         </tr>
         <tr>
-            <td><input type="text" class="input portion" id="recipe-portions"></td>
-            <td><input type="text" class="input i-duration" id="recipe-duration"></td>
+            <td><input type="number" class="input portion" name="recipe-portions" id="recipe-portions" [(ngModel)]="recipePortions"></td>
+            <td><input type="number" class="input i-duration" name="recipe-duration" id="recipe-duration" [(ngModel)]="recipeDuration"></td>
         </tr>
     </table>
     
@@ -53,14 +53,17 @@
     </div>
     <div class="container instructions">
         <label for="recipe-instructions">Preparación</label>
-        <textarea type="text" class="input i-instruction" id="recipe-instructions"></textarea>
+        <textarea type="text" class="input i-instruction" id="recipe-instructions" name="recipeSteps" [(ngModel)]="recipeSteps"></textarea>
     </div>  
     <div class="container images">
         <label for="recipe-image">Imagen de la receta</label>
-        <input type="file" name="recipe-image" id="recipe-image">
+        <input type="file" name="recipe-image" id="recipe-image" (change)="onFileSelected($event)" accept="image/*">
+        <div *ngFor="let foto of photos">
+            <img [src]="foto.url" alt="{{nombre}}" width="50">
+          </div>
     </div>
     
     <div class="container">
-        <button class="btn">Agregar receta</button>
+        <button class="btn" (click)="agregarReceta()">Agregar receta</button>
     </div>
 </form>
